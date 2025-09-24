@@ -1,0 +1,36 @@
+drop database if exists SQL_injection;
+create database SQL_injection;
+use SQL_injection;
+
+create table user(
+	User_id int primary key not null,
+	Name varchar(250),
+	Last_Name varchar(250),
+	Description varchar(250)
+);
+
+INSERT INTO `user` (User_id, Name, Last_Name, Description) VALUES
+(1,  'Max',        'Muster',     'Normaler Testbenutzer'),
+(2,  'Anna',       'Schmid',     'Weitere Testperson'),
+(3,  'Lena',       'Muller',     'Name mit Umlauten und deutscher Beschreibung'),
+(4,  'Jonas',      'Schneider',  'Kurzbeschreibung fuer Testzwecke'),
+(5,  'Laura',      'Fischer',    'Beschreibung mit html tags: <script>alert(\"hallo\")</script>'),
+(6,  'Paul',       'Weber',      'Beschreibung mit Semikolon; Semikolon testen'),
+(7,  'Sofia',      'Becker',     'Zeichen testen: % _ Prozent und Unterstrich'),
+(8,  'Tim',        'Hoffmann',   'Test mit doppelten Anfuehrungszeichen \"beispiel\"'),
+(9,  'Nina',       'Koch',       'Text mit backslash Pfad C:\\Programme\\Test'),
+(10, 'Felix',      'Graf',       'Lange Beschreibung fuer Stabilitaet und Laengentest'),
+(11, 'Maja',       'Kramer',     NULL),
+(12, 'Jonah',      'Lang',       'Mehrsprachig deutsch: schoen, freundlich, getestet'),
+(13, 'Emma',       'Meier',      'Fuehrende und folgene Leerzeichen   '),
+(14, 'Noah',       'Schulz',     'Sehr langer Text beginnt hier. Sehr langer Text beginnt hier. Sehr langer Text beginnt hier. Sehr langer Text.'),
+(15, 'Lara',       'Bauer',      'Kommentarzeichen testen -- und weitere pruefungen'),
+(16, 'Ben',        'Richter',    'Unicode testen: ae oe ue und umlaute ä ö ü'),
+(17, 'Sina',       'Paulsen',    'Beschreibung mit Klammern (Test) und Kommas, Punkten.'),
+(18, 'Leo',        'Zimmer',     'Beschreibung mit einfachen und doppelten zitatzeichen: ''und \"'),
+(19, 'Ida',        'Brandt',     'Emoji schreiben vermeiden, nur deutsche Zeichen'),
+(20, 'Karl',       'Mayer',      'Letzter Datensatz fuer Tests');
+
+SELECT * FROM user;
+
+
