@@ -1,15 +1,22 @@
-// index.js
+const express = require('express');
 const pool = require('./db');
 
-async function test() {
+const app = express();
+const PORT = 3000;
+
+app.get('/login', async (req, res) => {
   try {
     const [rows] = await pool.query('SELECT * FROM user JOIN data ON user.user_id = data.user_id;');
-    console.log('Ergebnis:', rows);
+    res.json(rows); // send users to frontend
   } catch (err) {
     console.error('Fehler:', err.code, err.message);
-  } finally {
-    await pool.end();
+    res.status(500).json({ error: 'Database query failed' });
   }
-}
+});
 
-test();
+// Optional: root route
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
