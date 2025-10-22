@@ -2,35 +2,65 @@ drop database if exists SQL_injection;
 create database SQL_injection;
 use SQL_injection;
 
-create table user(
-	User_id int primary key not null,
-	Name varchar(250),
-	Last_Name varchar(250),
-	Description varchar(250)
+CREATE TABLE user (
+    user_id INT PRIMARY KEY NOT NULL,
+    name VARCHAR(250),
+    password VARCHAR(250)
 );
 
-INSERT INTO `user` (User_id, Name, Last_Name, Description) VALUES
-(1,  'Max',        'Muster',     'Normaler Testbenutzer'),
-(2,  'Anna',       'Schmid',     'Weitere Testperson'),
-(3,  'Lena',       'Muller',     'Name mit Umlauten und deutscher Beschreibung'),
-(4,  'Jonas',      'Schneider',  'Kurzbeschreibung fuer Testzwecke'),
-(5,  'Laura',      'Fischer',    'Beschreibung mit html tags: <script>alert(\"hallo\")</script>'),
-(6,  'Paul',       'Weber',      'Beschreibung mit Semikolon; Semikolon testen'),
-(7,  'Sofia',      'Becker',     'Zeichen testen: % _ Prozent und Unterstrich'),
-(8,  'Tim',        'Hoffmann',   'Test mit doppelten Anfuehrungszeichen \"beispiel\"'),
-(9,  'Nina',       'Koch',       'Text mit backslash Pfad C:\\Programme\\Test'),
-(10, 'Felix',      'Graf',       'Lange Beschreibung fuer Stabilitaet und Laengentest'),
-(11, 'Maja',       'Kramer',     NULL),
-(12, 'Jonah',      'Lang',       'Mehrsprachig deutsch: schoen, freundlich, getestet'),
-(13, 'Emma',       'Meier',      'Fuehrende und folgene Leerzeichen   '),
-(14, 'Noah',       'Schulz',     'Sehr langer Text beginnt hier. Sehr langer Text beginnt hier. Sehr langer Text beginnt hier. Sehr langer Text.'),
-(15, 'Lara',       'Bauer',      'Kommentarzeichen testen -- und weitere pruefungen'),
-(16, 'Ben',        'Richter',    'Unicode testen: ae oe ue und umlaute ä ö ü'),
-(17, 'Sina',       'Paulsen',    'Beschreibung mit Klammern (Test) und Kommas, Punkten.'),
-(18, 'Leo',        'Zimmer',     'Beschreibung mit einfachen und doppelten zitatzeichen: ''und \"'),
-(19, 'Ida',        'Brandt',     'Emoji schreiben vermeiden, nur deutsche Zeichen'),
-(20, 'Karl',       'Mayer',      'Letzter Datensatz fuer Tests');
+CREATE TABLE data (
+    user_id INT,
+    age INT,
+    height FLOAT,
+    weight FLOAT,
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
+);
 
-SELECT * FROM user;
+INSERT INTO user (user_id, name, password) VALUES
+(1,  'Admin',  '1234'),
+(2,  'Anna', 'Anna'),
+(3,  'Lena', 'Lena'),
+(4,  'Jonas','Jonas'),
+(5,  'Laura','Laura'),
+(6,  'Paul', 'Paul'),
+(7,  'Sofia','Sofia'),
+(8,  'Tim',  'Tim'),
+(9,  'Nina', 'Nina'),
+(10, 'Felix','Felix'),
+(11, 'Maja', 'Maja'),
+(12, 'Jonah','Jonah'),
+(13, 'Emma', 'Emma'),
+(14, 'Noah', 'Noah'),
+(15, 'Lara', 'Lara'),
+(16, 'Ben',  'Ben'),
+(17, 'Sina', 'Sina'),
+(18, 'Leo',  'Leo'),
+(19, 'Ida',  'Ida'),
+(20, 'Karl', 'Karl');
+
+INSERT INTO data (user_id, age, height, weight) VALUES
+(1,  25, 180.5, 75.2),
+(2,  22, 165.3, 58.7),
+(3,  28, 170.0, 63.4),
+(4,  31, 182.1, 80.0),
+(5,  26, 168.7, 60.2),
+(6,  35, 178.9, 85.5),
+(7,  24, 160.2, 55.1),
+(8,  27, 175.6, 72.8),
+(9,  29, 169.4, 61.0),
+(10, 33, 183.3, 82.3),
+(11, 21, 158.8, 50.4),
+(12, 30, 177.2, 78.9),
+(13, 23, 166.5, 59.8),
+(14, 32, 181.0, 79.0),
+(15, 25, 170.9, 64.7),
+(16, 34, 180.0, 83.2),
+(17, 22, 162.3, 54.9),
+(18, 28, 176.8, 73.0),
+(19, 24, 164.7, 57.6),
+(20, 36, 185.2, 88.5);
+
+
+SELECT * FROM user JOIN data ON user.user_id = data.user_id;
 
 
