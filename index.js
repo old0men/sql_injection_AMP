@@ -10,7 +10,10 @@ app.get('/', (req, res) =>
 
 app.get('/users', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM user JOIN data ON user.user_id = data.user_id;');
+    let input_name = 'Ben'; // Simulierter Benutzereingabe
+    let query_string = 'SELECT * FROM user JOIN data ON user.user_id = data.user_id WHERE name = "'+ input_name + '";'
+    const [rows] = await pool.query(query_string);
+    console.log('Ergebnis:', rows);
     res.json(rows); // send users to frontend
   } catch (err) {
     console.error('Fehler:', err.code, err.message);
