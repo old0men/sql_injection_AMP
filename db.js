@@ -9,7 +9,8 @@ const pool = mysql.createPool({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   waitForConnections: true,
-  connectionLimit: 5
+  connectionLimit: 5,
+  multipleStatements: true
 });
 
 module.exports = pool;
