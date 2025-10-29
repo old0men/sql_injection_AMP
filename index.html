@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="script.js"></script>
-        <link rel="stylesheet" href="style.css">
-        <title>SQL Injection</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>SQL Injection</title>
 </head>
 <body>
 <h2>Login</h2>
 <form action="http://localhost:3000/login" method="POST">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br><br>
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br><br>
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
 
-        <input type="submit" value="Login">
+    <input type="submit" value="Login">
 </form>
 <p id="check">Check SQL Query</p>
 <p id="sqlQuery"></p>
