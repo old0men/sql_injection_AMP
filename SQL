@@ -16,6 +16,15 @@ CREATE TABLE data (
     FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
+DELIMITER $$
+
+CREATE PROCEDURE login_user(IN in_name VARCHAR(250), IN in_pass VARCHAR(250))
+BEGIN
+  SELECT * FROM user WHERE name = in_name AND password = in_pass;
+END$$
+
+DELIMITER ;
+
 INSERT INTO user (user_id, name, password) VALUES
 (1,  'Admin',  '1234'),
 (2,  'Anna', 'Anna'),
